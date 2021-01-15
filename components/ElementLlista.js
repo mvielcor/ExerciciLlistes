@@ -29,22 +29,32 @@ export class ElementLlista extends Component {
     }
     render() {
         return (
-            <Pressable onPress={this.viewPolsat}>
-                <View elevation={4} style={{ backgroundColor: 'orange', flexDirection: 'row', alignItems: 'center', justifyContent:'space-around' }}>
-                    {/* Programem l'event onPress per a que execute un callback*/}
+            <Pressable elevation={4} onPress={this.viewPolsat} style={{margin:5, borderRadius:5}}>
+            {/*Afegim el component Pressable per a saber quan es clica sobre el view i distingir
+                el click que fem sobre el text del nom del profe i el que fem sobre el view 
+            */}
+                <View  style={{ backgroundColor: 'orange', flexDirection: 'row', alignItems: 'center', justifyContent:'space-around' }}>
+                    {/* Programem l'event onPress per a que execute un callback quan cliquem sobre el nom del profe*/}
                     <View>
-                        <Text style={{ color: 'green', fontSize: 20, fontWeight: 'bold', margin: 5 }}
-                            onPress={this.elementPolsat.bind(this, this.props.elementAMostrar.item)}>
+                        <Text style={styles.text}
+                            onPress={this.elementPolsat.bind(this, this.props.elementAMostrar.item)}
+                        >
                             {this.props.elementAMostrar.item.profe}
                         </Text>
                     </View>
                     <View >
-                        <Text>{this.props.elementAMostrar.item.modul}
+                        <Text style={[styles.text,{color:'black'}]}>{this.props.elementAMostrar.item.modul}
                             <Badge value={this.props.elementAMostrar.item.hores + ' h.'} status="error" />
                         </Text>
                     </View>
+                </View>
+                <View style={{backgroundColor:'orange', alignItems:'center'}}>
+                    <Text style={{color:'blue'}}>{this.props.elementAMostrar.item.email}</Text>
                 </View>
             </Pressable>
         )
     }
 }
+const styles = StyleSheet.create({
+    text: { color: 'green', fontSize: 20, fontWeight: 'bold', margin: 5 },
+})
