@@ -39,6 +39,8 @@ export class App extends Component {
           <Text style={styles.sectionTitle}>Prova Llista</Text>
         </View>
         <View style={{height:300}}>
+          {/* Volem que al fer click en un nom de la llista ens mostre un alert indicant
+              el nom que hem clicat en la llista*/}
           <FlatList
            data={this.state.dadesAMostrar} 
            keyExtractor={(item, index)=>index.toString()}
