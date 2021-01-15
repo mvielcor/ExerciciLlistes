@@ -38,7 +38,7 @@ export class App extends Component {
         <View style={styles.sectionContainer}>
           <Text style={styles.sectionTitle}>Prova Llista</Text>
         </View>
-        <View>
+        <View style={{height:300}}>
           <FlatList
            data={this.state.dadesAMostrar} 
            keyExtractor={(item, index)=>index.toString()}
