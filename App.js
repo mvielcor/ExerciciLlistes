@@ -20,12 +20,15 @@ export class App extends Component {
   constructor(props){
     super(props)
     //dadesAMostrar com a variable de l'estat de la classe
+    //Afegim més informació al nostre array de dades
     this.state={
-      dadesAMostrar:[{profe:'Manel'},{profe:'Belén'},{profe:'Fran'},{profe:'JuanMi'},{profe:'Caterina'},{profe:'Manuel'},
-      {profe:'Manel'},{profe:'Belén'},{profe:'Fran'},{profe:'JuanMi'},{profe:'Caterina'},{profe:'Manuel'},
-      {profe:'Manel'},{profe:'Belén'},{profe:'Fran'},{profe:'JuanMi'},{profe:'Caterina'},{profe:'Manuel'},
-      {profe:'Manel'},{profe:'Belén'},{profe:'Fran'},{profe:'JuanMi'},{profe:'Caterina'},{profe:'Manuel'},
-      {profe:'Manel'},{profe:'Belén'},{profe:'Fran'},{profe:'JuanMi'},{profe:'Caterina'},{profe:'Manuel'},
+      dadesAMostrar:[
+        {profe:'Manel', modul:'DIN',hores:120},
+        {profe:'Belén', modul:'SGE',hores:100},
+        {profe:'Fran', modul:'PMDM i PSP',hores:160},
+        {profe:'JuanMi', modul:'ADA',hores:120},
+        {profe:'Caterina', modul:'ANG',hores:60},
+        {profe:'Manuel', modul:'EIE',hores:40}
     ]
     }
   }
@@ -40,7 +43,7 @@ export class App extends Component {
         </View>
         <View style={{height:300}}>
           {/* Volem que al fer click en un nom de la llista ens mostre un alert indicant
-              el nom que hem clicat en la llista*/}
+              el nom que hem clicat en la*/}
           <FlatList
            data={this.state.dadesAMostrar} 
            keyExtractor={(item, index)=>index.toString()}
