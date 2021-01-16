@@ -73,7 +73,6 @@ export class App extends Component {
   /* funció que rep les dades de l'element seleccionat al FlatList, i ompli les dades
   del component DetallElementSeleccionat **/
   ompliDetall = (dadesElementSeleccionat) => {
-    console.log(dadesElementSeleccionat)
     return this.setState({
       detallProfe: dadesElementSeleccionat.profe,
       detallModul: dadesElementSeleccionat.modul,
@@ -81,6 +80,33 @@ export class App extends Component {
       detallEmail: dadesElementSeleccionat.email,
       mostrarDetall: true,
     });
+  };
+  /* Funció que em compara si dos objectes són iguals */
+  objectesIguals = (a, b) => {
+    var aKeys = Object.keys(a).sort();
+    var bKeys = Object.keys(b).sort();
+    if (aKeys.length !== bKeys.length) {
+      return false;
+    }
+    if (aKeys.join('') !== bKeys.join('')) {
+      return false;
+    }
+    for (let i = 0; i < aKeys.length; i++) {
+      if (a[aKeys[i]] !== b[bKeys[i]]) {
+        return false;
+      }
+    }
+    return true;
+  };
+
+  /* funció que rep les dades de l'element a eliminar de la FlatList, i l'elimina */
+  eliminaElement = (elementAEliminar) => {
+    let nouArrayDadesAMostrar = this.state.dadesAMostrar.filter(
+      (unElementDeLarray) => {
+        return !this.objectesIguals(elementAEliminar, unElementDeLarray);
+      },
+    );
+    this.setState({dadesAMostrar: nouArrayDadesAMostrar, mostrarDetall: false});
   };
 
   render() {
@@ -108,18 +134,19 @@ export class App extends Component {
             />
           </View>
           <ScrollView nestedScrollEnabled={true}>
-            {this.state.mostrarDetall?(
+            {this.state.mostrarDetall ? (
               <DetallElementSeleccionat
                 elementSeleccionat={{
-                  nom: this.state.detallProfe,
+                  profe: this.state.detallProfe,
                   modul: this.state.detallModul,
                   hores: this.state.detallHores,
                   email: this.state.detallEmail,
                 }}
-              />)
-              :
-              <View/>
-            }
+                callbackEliminarDeLaLlista={this.eliminaElement}
+              />
+            ) : (
+              <View />
+            )}
           </ScrollView>
         </View>
       </>

@@ -7,17 +7,18 @@ export class DetallElementSeleccionat extends Component {
   constructor(props) {
     super(props);
   }
+
   render() {
     //destructurem l'objecte rebut
-    let {nom, modul, hores, email} = this.props.elementSeleccionat;
-
+    let {profe, modul, hores, email} = this.props.elementSeleccionat;
+    console.log(this.props.elementSeleccionat)
     return (
       <View>
         <Card containerStyle={styles.ombra}>
           <Card.Title style={{color: 'white'}}>Dades del Professor</Card.Title>
           <Card.Divider />
           <View style={{alignItems: 'center'}}>
-            <Text>Nom: {nom} </Text>
+            <Text>Nom: {profe} </Text>
             <Text>Mòdul: {modul} </Text>
             <Text>Email: {email} </Text>
             <Text>Hores: {hores} </Text>
@@ -41,6 +42,10 @@ export class DetallElementSeleccionat extends Component {
               type="font-awesome-5"
               color="#50f"
               reverse={true}
+              onPress={this.props.callbackEliminarDeLaLlista.bind(
+                this,
+                this.props.elementSeleccionat,
+              )}
             />
           </View>
         </Card>
