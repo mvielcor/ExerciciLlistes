@@ -9,7 +9,7 @@ export class DetallElementSeleccionat extends Component {
   }
   render() {
     //destructurem l'objecte rebut
-    let {nom, modul, hores, email} = this.props.elementSeleccionat;
+    let {profe, modul, hores, email} = this.props.elementSeleccionat;
 
     return (
       <View>
@@ -17,7 +17,7 @@ export class DetallElementSeleccionat extends Component {
           <Card.Title style={{color: 'white'}}>Dades del Professor</Card.Title>
           <Card.Divider />
           <View style={{alignItems: 'center'}}>
-            <Text>Nom: {nom} </Text>
+            <Text>Nom: {profe} </Text>
             <Text>Mòdul: {modul} </Text>
             <Text>Email: {email} </Text>
             <Text>Hores: {hores} </Text>

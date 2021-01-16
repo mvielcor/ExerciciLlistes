@@ -73,7 +73,6 @@ export class App extends Component {
   /* funció que rep les dades de l'element seleccionat al FlatList, i ompli les dades
   del component DetallElementSeleccionat **/
   ompliDetall = (dadesElementSeleccionat) => {
-    console.log(dadesElementSeleccionat)
     return this.setState({
       detallProfe: dadesElementSeleccionat.profe,
       detallModul: dadesElementSeleccionat.modul,
@@ -111,7 +110,7 @@ export class App extends Component {
             {this.state.mostrarDetall?(
               <DetallElementSeleccionat
                 elementSeleccionat={{
-                  nom: this.state.detallProfe,
+                  profe: this.state.detallProfe,
                   modul: this.state.detallModul,
                   hores: this.state.detallHores,
                   email: this.state.detallEmail,
